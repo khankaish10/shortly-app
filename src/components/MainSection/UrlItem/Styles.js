@@ -54,7 +54,7 @@ export const CopyBtn = styled.button `
     cursor: pointer;
     font-size: 1.1rem;
     &:hover{
-        background: ${props => props.primary ? '#2acfcfad' : null};
+        background: ${props => props.className === "active" ? null : '#2acfcfad'}  ;
     }
 
     @media screen and ( max-width: 800px) {
