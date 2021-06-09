@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+
+import NavBar from './components/Navbar'
+import styled from 'styled-components'
+import Hero from './components/HeroSection'
+import MainSection from './components/MainSection'
+import GettingStarted from './components/GettingStarted';
+import Footer from './components/Footer'
+import GlobalStyle from './globalStyle'
+
+const Wrapper = styled.div `
+  display: flex;
+  flex-direction: column;
+  
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <GlobalStyle />
+    <Wrapper>
+      <NavBar />
+      <Hero />
+      <MainSection />
+      <GettingStarted />
+      <Footer />
+    </Wrapper>
+    </>
   );
 }
 
