@@ -13,6 +13,7 @@ import {
     StatsContainer,
     Ribbon,
     UrlContainer,
+    AlertContainer
 
 } from './MainStyles'
 import { fetchUrl } from '../../api'
@@ -47,20 +48,34 @@ const statData = [
 
 ];
 
+
+
 const MainSection = () => {
-    const [url, setUrl] = useState('')
-    const [urls, setUrls] = useState([])
+    const [url, setUrl] = useState("")
+    const [urls, setUrls] = useState([
+        {
+            code: "oSMxPf",
+            full_share_link: "https://shrtco.de/share/oSMxPf",
+            full_short_link: "https://shrtco.de/oSMxPf",
+            full_short_link2: "https://9qr.de/oSMxPf",
+            full_short_link3: "https://shiny.link/oSMxPf",
+            original_link: "https://docs.google.com/document/d/1kC4MZ5ZTkynqGfqt_nbcWQKFcDDepxX4J_vqR-lyyCo/edit",
+            share_link: "shrtco.de/share/oSMxPf",
+            short_link: "shrtco.de/oSMxPf",
+            short_link2: "9qr.de/oSMxPf",
+            short_link3: "shiny.link/oSMxPf",
+        }
+    ])
     const [alert, setAlert] = useState({ err: '' })
     const [isLoading, setIsLoading] = useState(false)
 
-    console.log(isLoading)
 
     const getLink = async () => {
         setIsLoading(true);
         const { data } = await fetchUrl(url);
         setUrls([...urls, data?.result])
         setIsLoading(false);
-        
+
     }
 
     const error = (err) => {
@@ -72,17 +87,24 @@ const MainSection = () => {
     }
 
     const existingLink = (url) => {
-        urls.find( item => {
-            if(item.original_link === url){
-                return error('You already shortened this link')
-            } else {
-                setUrl('');            
-                getLink();              
-            }
-        })
+        if (urls.length === 0) {
+            setUrl('')
+            getLink();
+        } else {
+            urls.find(item => {
+                if (item.original_link.split('#')[0] === url.split('#')[0]) {
+                    return error('You already shortened this link')
+                } else {
+                    setUrl('')
+                   return getLink();
+                }
+            })
+
+        }
+
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, url) => {
         e.preventDefault();
 
         if (!url) {
@@ -90,19 +112,22 @@ const MainSection = () => {
 
         } else if (!url.includes("https") && !url.includes("www") && !url.includes("http")) {
             error('Please enter a valid url')
-        }  else {
+        } else {
             existingLink(url);
         }
     }
     return (
         <Wrapper>
             <Container>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={(e) => handleSubmit(e, url)}>
                     <InputContainer >
                         <Input type="text" className={alert.err && "active"} value={url} onChange={(e) => setUrl(e.target.value)} placeholder="Shorten a link here..." />
-                        {
-                            alert.err === '' ? null : <Alert >{alert.err}</Alert>
-                        }
+                        <AlertContainer>
+                            {
+                                alert.err === '' ? null : <Alert >{alert.err}</Alert>
+                            }
+                        </AlertContainer>
+
 
                     </InputContainer>
                     <Submit primary type="submit">Shorten It!</Submit>
@@ -110,11 +135,11 @@ const MainSection = () => {
 
                 <UrlContainer>
                     {
-                        isLoading ? <p style={{marginBottom: '10px', fontSize: '1.3rem'}}>Please wait...</p> : null
+                        isLoading && <p style={{ marginBottom: '10px', fontSize: '1.3rem' }}>Please wait...</p>
                     }
-                        
+
                     {
-                        urls.map((url, index) => {
+                        urls?.map((url, index) => {
                             return (
                                 <UrlItem
                                     key={index}

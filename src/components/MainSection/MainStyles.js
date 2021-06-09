@@ -49,12 +49,15 @@ export const Form = styled.form`
 export const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex: 1;
     padding-left: 2rem;
+    height: 100%;
 
     @media screen and (max-width: 768px) {
         width: 100%;
         padding-left: 0;
+        margin-bottom: 1rem;
 
 
 }
@@ -107,10 +110,13 @@ export const Submit = styled(Button)`
     }
 `
 
+export const AlertContainer = styled.p`
+    height: 15px;
+    margin-bottom: -10px;
+`
 export const Alert = styled.p`
     color: ${colors.secondary.red};
     font-size: 13px;
-    margin-top: 10px;
 `
 export const StatsHeadingText = styled.div`
     display: flex;
