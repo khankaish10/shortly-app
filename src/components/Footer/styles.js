@@ -29,6 +29,7 @@ export const Row = styled.div`
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const ImageContainer = styled.div`
@@ -52,6 +53,7 @@ export const Title = styled.p`
   color: #fff;
   margin-bottom: 2.2rem;
   font-weight: 700;
+ 
 
   @media screen and ( max-width: 768px) {
     margin-bottom: 1.5rem;
@@ -65,6 +67,7 @@ export const Link = styled.a`
   font-size: 1rem;
   margin-bottom: 0.7rem;
   text-decoration: none;
+  width: fit-content;
   &:hover {
       color: ${colors.primary.cyan};
   }
