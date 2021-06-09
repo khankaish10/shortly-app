@@ -21,9 +21,9 @@ export const NavbarContainer = styled.div`
     align-items: center;
 `
 export const Logo = styled.img`  
-    height: 30px;
+    height: 25px;
     @media screen and ( max-width: 768px) {
-        height: 25px;
+        height: 20px;
     }
     
 `
@@ -68,7 +68,7 @@ export const Link = styled.a`
     text-decoration: none;
     cursor: pointer;
     margin-right: 20px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: ${colors.neutral.grayishViolet};
     transition: all 200ms ease;
@@ -110,7 +110,7 @@ export const Button = styled.button`
     border-radius: 50px;
     font-weight: 700;
     font-family: 'Poppins';
-    font-size: 1.1rem;
+    font-size: 1rem;
 
     &:hover {
         background: ${props => props.primary ? "#2acfcfad" : null} ;

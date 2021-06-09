@@ -51,14 +51,11 @@ export const TextContainer = styled.div `
 export const Heading = styled.h1 `
     color: ${colors.neutral.veryDarkBlue};
     font-weight: 700;
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 1.2;
     margin-bottom: 10px;
 
-    
-    @media screen and ( max-width: 1100px) {
-        font-size: 3rem;
-    }
+
     @media screen and ( max-width: 900px) {
         font-size: 2.5rem;
     }
@@ -72,7 +69,7 @@ export const Paragraph = styled.p `
     color: ${colors.neutral.grayishViolet};
     line-height:1.7;
     margin-bottom: 40px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 
     @media screen and ( max-width: 900px) {
         font-size: 1rem;

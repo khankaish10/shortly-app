@@ -52,20 +52,7 @@ const statData = [
 
 const MainSection = () => {
     const [url, setUrl] = useState("")
-    const [urls, setUrls] = useState([
-        {
-            code: "oSMxPf",
-            full_share_link: "https://shrtco.de/share/oSMxPf",
-            full_short_link: "https://shrtco.de/oSMxPf",
-            full_short_link2: "https://9qr.de/oSMxPf",
-            full_short_link3: "https://shiny.link/oSMxPf",
-            original_link: "https://docs.google.com/document/d/1kC4MZ5ZTkynqGfqt_nbcWQKFcDDepxX4J_vqR-lyyCo/edit",
-            share_link: "shrtco.de/share/oSMxPf",
-            short_link: "shrtco.de/oSMxPf",
-            short_link2: "9qr.de/oSMxPf",
-            short_link3: "shiny.link/oSMxPf",
-        }
-    ])
+    const [urls, setUrls] = useState([])
     const [alert, setAlert] = useState({ err: '' })
     const [isLoading, setIsLoading] = useState(false)
 
