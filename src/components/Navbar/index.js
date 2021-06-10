@@ -15,7 +15,7 @@ import logo from '../../images/logo.svg'
 
 
 const NavBar = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <Navbar>
